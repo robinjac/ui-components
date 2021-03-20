@@ -9,3 +9,9 @@ __metadata:
   resolution: "awesome-apps@workspace:."
   languageName: unknown
   linkType: soft
+
+"dashboard@workspace:packages/dashboard":
+  version: 0.0.0-use.local
+  resolution: "dashboard@workspace:packages/dashboard"
+  languageName: unknown
+  linkType: soft

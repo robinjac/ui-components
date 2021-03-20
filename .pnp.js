@@ -21,12 +21,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {
         "name": "awesome-apps",
         "reference": "workspace:."
+      },
+      {
+        "name": "dashboard",
+        "reference": "workspace:packages/dashboard"
       }
     ],
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.)(?:(?:(?!(?:^|\\/)\\.).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["awesome-apps", ["workspace:."]]
+      ["awesome-apps", ["workspace:."]],
+      ["dashboard", ["workspace:packages/dashboard"]]
     ],
     "fallbackPool": [
     ],
@@ -46,6 +51,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["awesome-apps", "workspace:."]
+          ],
+          "linkType": "SOFT",
+        }]
+      ]],
+      ["dashboard", [
+        ["workspace:packages/dashboard", {
+          "packageLocation": "./packages/dashboard/",
+          "packageDependencies": [
+            ["dashboard", "workspace:packages/dashboard"]
           ],
           "linkType": "SOFT",
         }]

@@ -1,0 +1,6 @@
+{
+  "name": "dashboard",
+  "scripts": {
+    "test": "echo test"
+  }
+}
