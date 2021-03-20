@@ -1,0 +1,7 @@
+{
+  "name": "awesome-apps",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
