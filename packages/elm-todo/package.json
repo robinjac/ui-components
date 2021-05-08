@@ -4,6 +4,7 @@
     "license": "MIT",
     "scripts": {
         "start": "elm reactor",
+        "build": "elm make src/Main.elm --optimize --output=dist/elm.js",
         "test": "echo test"
     }
 }
