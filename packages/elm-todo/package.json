@@ -1,0 +1,8 @@
+{
+    "name": "elm-todo",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "test": "echo test"
+    }
+}

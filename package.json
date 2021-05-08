@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dashboard": "yarn workspace dashboard"
+    "dashboard": "yarn workspace dashboard",
+    "elm-todo": "yarn workspace elm-todo"
   }
 }
