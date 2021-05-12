@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "dashboard": "yarn workspace dashboard",
-    "elm-todo": "yarn workspace elm-todo"
+    "elm-todo": "yarn workspace elm-todo",
+    "elm-svelte-app": "yarn workspace elm-svelte-app"
   }
 }
