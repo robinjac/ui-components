@@ -4,3 +4,4 @@ dist
 dist-ssr
 *.local
 elm-stuff
+.vscode
