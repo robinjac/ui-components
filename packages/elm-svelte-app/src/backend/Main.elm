@@ -6,15 +6,15 @@ type Msg
     | Decrement
     | Nothing
 
-init : () -> ( Int, Cmd Msg )
-init () = ( 0, sendMessage 0 )
+init : Int -> ( Int, Cmd Msg )
+init initialValue = ( initialValue, sendMessage initialValue )
 
 port sendMessage : Int -> Cmd msg
 
 port messageReceiver : (String -> msg) -> Sub msg
 
 
-main : Program () Int Msg
+main : Program Int Int Msg
 main = worker {init = init, update = update, subscriptions = subscriptions}
 
 updateState : Int -> (Int, Cmd msg)

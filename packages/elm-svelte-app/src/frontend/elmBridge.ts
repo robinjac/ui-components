@@ -8,7 +8,10 @@ interface ElmMain {
     set: (type: Msg) => void
 }
 
-const app = Elm.Main.init();
+// Initial value that we pass down to elm context and when the elm bride store gets called the first time.
+const initialValue = 0;
+
+const app = Elm.Main.init({flags: initialValue});
 
 export const elm_main: ElmMain = {
     set(type: Msg) {
@@ -18,7 +21,10 @@ export const elm_main: ElmMain = {
 
         app.ports.sendMessage.subscribe(fn);
 
-        fn(0)
+        // Elm does not run fn first time it subscribes to it so we 
+        // need to manually call it with the initial value the first
+        // time the store gets called.
+        fn(initialValue);
 
         return () => {
             app.ports.sendMessage.unsubscribe(fn);
