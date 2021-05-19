@@ -1,22 +1,33 @@
 {
-    "name": "elm-svelte-app",
-    "version": "0.0.0",
-    "license": "MIT",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "serve": "vite preview",
-        "check-code:svelte": "svelte-check",
-        "check-code:elm": "elm make src/backend/Main.elm --output=/dev/null",
-        "check-code": "yarn check-code:svelte && yarn check-code:elm"
-    },
-    "devDependencies": {
-        "@sveltejs/vite-plugin-svelte": "^1.0.0-next.7",
-        "svelte": "^3.37.0",
-        "svelte-check": "^1.5.4",
-        "svelte-preprocess": "^4.7.2",
-        "typescript": "^4.2.4",
-        "vite": "^2.3.0",
-        "vite-plugin-elm": "^2.1.2"
-    }
+  "name": "elm-svelte-app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "check-code:svelte": "svelte-check",
+    "check-code:elm": "elm make src/backend/Main.elm --output=/dev/null",
+    "check-code": "yarn check-code:svelte && yarn check-code:elm",
+    "dev:storybook": "start-storybook -p 6006",
+    "build:storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-svelte-csf": "^1.0.0",
+    "@storybook/svelte": "^6.2.9",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.7",
+    "babel-loader": "^8.2.2",
+    "svelte": "^3.38.2",
+    "svelte-check": "^1.5.4",
+    "svelte-loader": "^3.1.1",
+    "svelte-preprocess": "^4.7.2",
+    "typescript": "^4.2.4",
+    "vite": "^2.3.0",
+    "vite-plugin-elm": "^2.1.2"
+  },
+  "dependencies": {}
 }
