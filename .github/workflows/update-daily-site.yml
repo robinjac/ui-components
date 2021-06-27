@@ -3,7 +3,7 @@ name: Update Daily Site
 on: [push, delete]
 
 concurrency:
-    group: ${{ github.ref }}
+    group: ${{ github.ref }}${{ github.actor }}
     cancel-in-progress: true
 jobs:
      delete-from-daily:
