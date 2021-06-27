@@ -10,18 +10,19 @@ jobs:
         uses: rlespinasse/github-slug-action@v3.x
       - name: Install and Build 🔧
         run: | # Install npm packages and build the Storybook files.
-          yarn
-          yarn elm-svelte-app build:storybook
+            yarn
+            yarn elm-svelte-app build:storybook
       - name: Rename 'storybook-static' to Current Branch Name
         run: mv packages/elm-svelte-app/storybook-static packages/elm-svelte-app/${{ env.GITHUB_REF_SLUG }}
       - name: Push to Daily Site 🚀
-        uses: crykn/copy_folder_to_another_repo_action@v1.0.6
-        env:
-            API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-            source_folder: 'packages/elm-svelte-app/${{ env.GITHUB_REF_SLUG }}'
-            destination_repo: 'robinjac/daily-sites'
-            destination_folder: 'awesome-apps/${{ env.GITHUB_REF_SLUG }}' # We place the files in the awesome apps folder at the destination.
-            user_email: 'robin23jac@gmail.com'
-            user_name: 'robinjac'
-            commit_msg: '[GHA] Push from ${{ env.GITHUB_REF_SLUG }}'
+        run: |
+            mkdir tmp
+            git config --global user.email ${{ github.actor }}
+            git config --global user.name ${{ github.actor }}
+            git clone --single-branch --branch master "https://${{ secrets.API_TOKEN_GITHUB }}@github.com/robinjac/daily-sites.git" tmp
+            rm -rf tmp/awesome-apps/${{ env.GITHUB_REF_SLUG }}/
+            cp -a packages/elm-svelte-app/${{ env.GITHUB_REF_SLUG }}/. tmp/awesome-apps/${{ env.GITHUB_REF_SLUG }}/
+            cd tmp
+            git add .
+            git commit --allow-empty --message "[GHA] Push from ${{ env.GITHUB_REF_SLUG }}"
+            git push -u origin HEAD:master
