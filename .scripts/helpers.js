@@ -3,9 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.extractCommitData = exports.slug = exports.sameBranch = exports.getBranchType = exports.branch_types = exports.main_branches = exports.getJiraTag = exports.getCreatedDate = exports.actionHandler = exports.script_tag = exports.getProject = void 0;
 function getProject(project_name, repo, projects) {
     var project = projects.find(function (project) { return project.name === project_name; });
-    if (project) {
-        project.repository = repo;
+    if (!project) {
+        project = {
+            name: project_name,
+            branches: {
+                main: [],
+                release: [],
+                feature: [],
+                user: [],
+                other: []
+            }
+        };
+        projects.push(project);
     }
+    project.repository = repo;
     return project;
 }
 exports.getProject = getProject;

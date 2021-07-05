@@ -50,8 +50,8 @@ jobs:
         - name: Push to Daily Site 🚀
           run: |
             mkdir tmp
-            git config user.email ${{ github.actor }}
-            git config user.name ${{ github.actor }}
+            git config --global user.email ${{ github.actor }}
+            git config --global user.name ${{ github.actor }}
             git clone --single-branch --branch master "https://${{ secrets.API_TOKEN_GITHUB }}@github.com/robinjac/daily-sites.git" tmp
             rm -rf tmp/awesome-apps/${{ env.GITHUB_REF_SLUG }}/
             cp -a packages/elm-svelte-app/${{ env.GITHUB_REF_SLUG }}/. tmp/awesome-apps/${{ env.GITHUB_REF_SLUG }}/
